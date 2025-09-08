@@ -137,6 +137,13 @@
   display: block;
   width: 100%;
   height: auto;
+  max-width: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.cover img:hover {
+  transform: scale(1.02);
 }
 
 /* Main content with right sidebar (author + related) */
@@ -235,6 +242,169 @@
   margin-left: 16px;
   color: #cfcfcf;
   text-decoration: none;
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+  .page {
+    padding: 16px 12px 32px;
+  }
+  
+  .hero-title {
+    font-size: 28px;
+    line-height: 1.2;
+  }
+  
+  .hero-subtitle {
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+  
+  .meta {
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+  }
+  
+  .meta span {
+    font-size: 13px;
+  }
+  
+  .cover {
+    margin: 12px 0 20px;
+  }
+  
+  .content-wrap {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .content-main {
+    padding: 16px;
+  }
+  
+  .content-main h2 {
+    font-size: 24px;
+    margin-top: 16px;
+    margin-bottom: 8px;
+  }
+  
+  .content-main h3 {
+    font-size: 20px;
+    margin-top: 16px;
+    margin-bottom: 8px;
+  }
+  
+  .content-main p {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  
+  .sidebar {
+    order: -1;
+  }
+  
+  .widget {
+    padding: 12px;
+  }
+  
+  .author-box {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+  
+  .avatar {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+  }
+  
+  .related-list {
+    gap: 12px;
+  }
+  
+  .related-list a {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding: 12px 8px 24px;
+  }
+  
+  .hero-title {
+    font-size: 24px;
+  }
+  
+  .hero-subtitle {
+    font-size: 14px;
+  }
+  
+  .meta-badges {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .badge {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+  
+  .content-main {
+    padding: 12px;
+  }
+  
+  .content-main h2 {
+    font-size: 20px;
+  }
+  
+  .content-main h3 {
+    font-size: 18px;
+  }
+  
+  .widget {
+    padding: 10px;
+  }
+  
+  .footer .container {
+    padding: 16px 8px 24px;
+  }
+  
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .footer-section h3,
+  .footer-section h4 {
+    font-size: 18px;
+  }
+  
+  .newsletter {
+    flex-direction: column;
+  }
+  
+  .newsletter input {
+    margin-bottom: 8px;
+  }
+  
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+  
+  .footer-links {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .footer-links a {
+    margin: 0 8px;
+  }
 }
 
 @media (max-width: 900px) {
