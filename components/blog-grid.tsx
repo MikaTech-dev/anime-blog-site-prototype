@@ -19,13 +19,13 @@ interface BlogGridProps {
 
 export function BlogGrid({ posts }: BlogGridProps) {
   return (
-    <section className="space-y-8">
+    <section id="latest" className="space-y-12 py-12">
       <div className="text-center space-y-4">
-        <h2 className="text-3xl md:text-4xl font-bold">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-heading text-foreground">
           Latest Posts
         </h2>
-        <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-          Stay updated with the freshest content from the anime and gaming universe
+        <p className="text-lg text-muted-foreground font-body max-w-2xl mx-auto">
+          Stay updated with the freshest content from the gaming, tech, and anime universe
         </p>
       </div>
 
@@ -39,13 +39,18 @@ export function BlogGrid({ posts }: BlogGridProps) {
             tags={post.tags}
             date={post.date}
             slug={post.slug}
+            category={post.category}
           />
         ))}
       </div>
 
       {/* Load more section */}
       <div className="text-center pt-8">
-        <Button size="lg" variant="outline" className="gaming-border-hover bg-transparent">
+        <Button 
+          size="lg" 
+          variant="outline" 
+          className="border-2 border-[#D32F2F] text-[#D32F2F] hover:bg-[#D32F2F] hover:text-black font-body px-8 py-6 rounded-lg"
+        >
           Load More Posts
         </Button>
       </div>

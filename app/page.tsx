@@ -1,22 +1,30 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { MapPin, Gamepad2, Cpu, Zap } from "lucide-react"
+import Image from "next/image"
 import type { StaticImageData } from "next/image"
+import { BlogFooter } from "@/components/blog-footer"
+import { 
+  CheckCircle, Gamepad2, Laptop, Star, Users, Trophy, ArrowRight, 
+  Cpu, Sparkles, Newspaper, Heart, Calendar, Zap, Gift, Handshake, 
+  Clock 
+} from "lucide-react"
 import gamingImage from "@/assets/gaming-consoles-futuristic-technology.png"
 import animeImage from "@/assets/anime-characters-colorful-scene.png"
 import cyberpunkImage from "@/assets/cyberpunk-futuristic-city-neon-lights.png"
 import ladyGaming from "@/assets/lady-gaming.jpg"
+import eldenRingImage from "@/assets/elden-ring-fantasy-landscape-dark-souls.png"
+import demonSlayerImage from "@/assets/demon-slayer-animation-fire-effects.png"
+import blogImage from "@/assets/blog-1660679033240.jpg"
 
 interface FeaturedPost {
   id: string
   title: string
   excerpt: string
   image: string | StaticImageData
-  tags: string[]
-  date: string
-  slug: string
   category: string
+  date: string
+  readTime: string
+  slug: string
 }
 
 const featuredPosts: FeaturedPost[] = [
@@ -24,380 +32,455 @@ const featuredPosts: FeaturedPost[] = [
     id: "1",
     title: "Latest Gaming Hardware Reviews",
     excerpt: "Discover the newest graphics cards, processors, and gaming peripherals that will elevate your setup.",
-  image: gamingImage,
-    tags: ["Tech", "Reviews", "Hardware"],
+    image: gamingImage,
+    category: "Tech Review",
     date: "Dec 15, 2024",
+    readTime: "5 min read",
     slug: "latest-gaming-hardware-reviews",
-    category: "Tech",
   },
   {
     id: "2",
     title: "Top Anime Merchandise This Season",
-    excerpt:
-      "From collectible figures to limited edition apparel, explore the hottest anime merchandise available now.",
-  image: animeImage,
-    tags: ["Anime", "Merchandise", "Collectibles"],
+    excerpt: "From collectible figures to limited edition apparel, explore the hottest anime merchandise available now.",
+    image: animeImage,
+    category: "Anime Culture",
     date: "Dec 12, 2024",
+    readTime: "4 min read",
     slug: "top-anime-merchandise-season",
-    category: "Anime",
   },
   {
     id: "3",
     title: "Gaming Setup Guide 2024",
-    excerpt:
-      "Build the ultimate gaming battlestation with our comprehensive guide to the best components and accessories.",
-  image: cyberpunkImage,
-    tags: ["Gaming", "Setup", "Guide"],
-    date: "Dec 10, 2024",
-    slug: "gaming-setup-guide-2024",
+    excerpt: "Build the ultimate gaming battlestation with our comprehensive guide to the best components and accessories.",
+    image: cyberpunkImage,
     category: "Gaming",
+    date: "Dec 10, 2024",
+    readTime: "7 min read",
+    slug: "gaming-setup-guide-2024",
   },
 ]
 
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-background">
-      <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
-        {/* Blurred background image (full-bleed) */}
-        <div className="absolute inset-0 z-10 overflow-hidden">
-          <img
-            src={ladyGaming.src || "/assets/lady-gaming.jpg"}
-            alt="Lady gaming background"
-            className="w-full h-full object-cover filter blur-sm scale-105 brightness-75"
+      {/* Section 2: Hero Section */}
+      <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-[#121212]">
+        {/* Background Image with Gradient Overlay */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src={ladyGaming}
+            alt="Gaming competition background"
+            fill
+            className="object-cover opacity-60"
+            priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background/60" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
         </div>
-        {/* Animated background */}
-        <div className="absolute inset-0 anime-gradient">
-          <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-background/40 to-background/80" />
-          {/* Animated grid pattern */}
-          <div className="absolute inset-0 opacity-20">
-            <div className="absolute inset-0 bg-[linear-gradient(rgba(255,0,0,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,0,0,0.1)_1px,transparent_1px)] bg-[size:50px_50px] animate-pulse" />
+
+        {/* Content Container */}
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[90vh] py-20">
+            {/* Left Side Content */}
+            <div className="space-y-8 text-white">
+              <div className="inline-block">
+                <span className="px-4 py-2 bg-[#D32F2F] text-white text-sm font-semibold rounded-full font-heading">
+                  Your Gaming & Tech Community Hub
+                </span>
+              </div>
+              
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading leading-tight">
+                Level Up Your{" "}
+                <span className="text-[#D32F2F]">Gaming Experience</span> with Premium Tech & Epic Events
+              </h1>
+              
+              <p className="text-xl text-gray-300 font-body max-w-xl">
+                Join a vibrant community where gaming gear, anime collectibles, tournaments, and meetups come together. 
+                Discover premium tech and connect with fellow enthusiasts.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button 
+                  asChild 
+                  className="bg-[#D32F2F] hover:bg-[#B71C1C] text-white font-body px-8 py-6 rounded-lg text-lg"
+                >
+                  <Link href="/events">Claim Your Spot</Link>
+                </Button>
+                <Button 
+                  asChild 
+                  variant="outline"
+                  className="bg-transparent border-2 border-white text-white hover:bg-white/10 font-body px-8 py-6 rounded-lg text-lg"
+                >
+                  <Link href="/store">Browse Premium Gear</Link>
+                </Button>
+              </div>
+              
+              <div className="flex items-center gap-2 text-gray-300 font-body">
+                <CheckCircle className="w-5 h-5 text-[#D32F2F]" />
+                <span>Free entry • No fees • All gamers welcome</span>
+              </div>
+            </div>
+
+            {/* Right Side: Feature Cards (Desktop Only) */}
+            <div className="hidden lg:grid grid-cols-2 gap-4">
+              <div className="glass-effect bg-white/10 backdrop-blur-md rounded-2xl p-6 hover:scale-105 transition-transform">
+                <div className="w-12 h-12 bg-[#D32F2F]/20 rounded-full flex items-center justify-center mb-4">
+                  <Gamepad2 className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-white font-heading font-semibold mb-2">Epic Tournaments</h3>
+                <p className="text-gray-300 text-sm font-body">Compete with the best</p>
+              </div>
+              
+              <div className="glass-effect bg-white/10 backdrop-blur-md rounded-2xl p-6 hover:scale-105 transition-transform mt-8">
+                <div className="w-12 h-12 bg-[#1976D2]/20 rounded-full flex items-center justify-center mb-4">
+                  <Laptop className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-white font-heading font-semibold mb-2">Latest Tech</h3>
+                <p className="text-gray-300 text-sm font-body">Cutting-edge equipment</p>
+              </div>
+              
+              <div className="glass-effect bg-white/10 backdrop-blur-md rounded-2xl p-6 hover:scale-105 transition-transform">
+                <div className="w-12 h-12 bg-[#FFC107]/20 rounded-full flex items-center justify-center mb-4">
+                  <Star className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-white font-heading font-semibold mb-2">Anime Culture</h3>
+                <p className="text-gray-300 text-sm font-body">Exclusive collectibles</p>
+              </div>
+              
+              <div className="glass-effect bg-white/10 backdrop-blur-md rounded-2xl p-6 hover:scale-105 transition-transform mt-8">
+                <div className="w-12 h-12 bg-[#FF7043]/20 rounded-full flex items-center justify-center mb-4">
+                  <Users className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-white font-heading font-semibold mb-2">Vibrant Community</h3>
+                <p className="text-gray-300 text-sm font-body">Connect with gamers</p>
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Hero content */}
-        <div className="relative z-10 text-center space-y-8 max-w-6xl mx-auto px-4">
-          <h1 className="text-5xl md:text-7xl font-bold text-balance leading-tight hero-heading">
-            <span className="text-primary glow-text-red">Case Properties - Tech, Gaming & Anime Specialists</span>
-          </h1>
-          <p className="text-xl md:text-2xl text-muted-legible max-w-3xl mx-auto text-pretty">
-            Your ultimate destination for cutting-edge technology, gaming gear, and authentic anime merch. Where
-            passion meets innovation.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" className="glow-red-hover gaming-border text-white-hover bg-transparent text-lg px-8 py-6">
-              <Link href="/blog">Read Our Blog</Link>
-            </Button>
-            <Button asChild size="lg" className="glow-red-hover text-lg px-8 py-6">
-              <Link href="/about">About Us</Link>
-            </Button>
-          </div>
-        </div>
-
-        {/* Floating elements for anime/gaming aesthetic */}
-        <div className="absolute top-20 left-10 w-4 h-4 bg-primary rounded-full animate-bounce opacity-60" />
-        <div className="absolute top-40 right-20 w-6 h-6 bg-primary/50 rounded-full animate-pulse" />
-        <div className="absolute bottom-20 left-20 w-3 h-3 bg-primary rounded-full animate-ping" />
-        <div className="absolute bottom-40 right-10 w-5 h-5 bg-primary/30 rounded-full animate-bounce delay-1000" />
+        {/* White Gradient Fade */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent z-10" />
       </section>
 
-      <section className="py-20 px-4">
+      {/* Section 3: Features Grid - "Why Case Blogs" */}
+      <section className="py-20 px-4 bg-white">
         <div className="container mx-auto">
           <div className="text-center space-y-4 mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold">
-              Our Specialties
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-heading text-foreground">
+              Why Case Blogs is Your Ultimate Gaming Destination
             </h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Discover our carefully curated selection across three passionate domains
+            <p className="text-lg text-muted-foreground font-body max-w-2xl mx-auto">
+              More than a store, we're your gaming community hub where passion meets premium tech
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Card className="anime-gradient gaming-border gaming-border-hover glow-red-hover transition-all duration-300 hover:scale-105">
-              <CardHeader className="text-center">
-                <div className="mx-auto w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mb-4">
-                  <Cpu className="w-8 h-8 icon-adapt text-primary" />
-                </div>
-                <CardTitle className="text-xl">Technology</CardTitle>
-              </CardHeader>
-              <CardContent className="text-center">
-                <p className="text-muted-foreground">
-                  The latest phones, laptops, gadgets, and legit replacement parts for enthusiasts and
-                  professionals alike.
-                </p>
-              </CardContent>
-            </Card>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Feature Card 1 */}
+            <div className="bg-pink-50 rounded-2xl p-6 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border-2 border-transparent hover:border-[#D32F2F]">
+              <div className="w-16 h-16 bg-gradient-to-br from-[#D32F2F] to-[#FF7043] rounded-full flex items-center justify-center mb-4">
+                <Trophy className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-xl font-heading font-bold mb-2">Regular Tournaments</h3>
+              <p className="text-muted-foreground font-body mb-4">
+                Compete in weekly gaming tournaments with amazing prizes and recognition
+              </p>
+              <Link href="/events" className="text-[#D32F2F] font-body hover:gap-2 flex items-center gap-1 group">
+                Learn more <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
 
-            <Card className="anime-gradient gaming-border gaming-border-hover glow-red-hover transition-all duration-300 hover:scale-105">
-              <CardHeader className="text-center">
-                <div className="mx-auto w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mb-4">
-                  <Gamepad2 className="w-8 h-8 icon-adapt text-primary" />
-                </div>
-                <CardTitle className="text-xl">Gaming</CardTitle>
-              </CardHeader>
-              <CardContent className="text-center">
-                <p className="text-muted-foreground">
-                  Premium gaming accessories, mechanical keyboards, high-performance mice, and much more for
-                  competitive gaming.
-                </p>
-              </CardContent>
-            </Card>
+            {/* Feature Card 2 */}
+            <div className="bg-pink-50 rounded-2xl p-6 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border-2 border-transparent hover:border-[#D32F2F]">
+              <div className="w-16 h-16 bg-gradient-to-br from-[#1976D2] to-[#FF7043] rounded-full flex items-center justify-center mb-4">
+                <Cpu className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-xl font-heading font-bold mb-2">Premium Tech</h3>
+              <p className="text-muted-foreground font-body mb-4">
+                Latest gaming hardware, peripherals, and tech innovations at competitive prices
+              </p>
+              <Link href="/store" className="text-[#D32F2F] font-body hover:gap-2 flex items-center gap-1 group">
+                Learn more <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
 
-            <Card className="anime-gradient gaming-border gaming-border-hover glow-red-hover transition-all duration-300 hover:scale-105">
-              <CardHeader className="text-center">
-                <div className="mx-auto w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mb-4">
-                  <Zap className="w-8 h-8 icon-adapt text-primary" />
-                </div>
-                <CardTitle className="text-xl">Anime</CardTitle>
-              </CardHeader>
-              <CardContent className="text-center">
-                <p className="text-muted-foreground">
-                  Authentic figures, collectibles, manga, and other exclusive merch from your favorite anime
-                </p>
-              </CardContent>
-            </Card>
+            {/* Feature Card 3 */}
+            <div className="bg-pink-50 rounded-2xl p-6 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border-2 border-transparent hover:border-[#D32F2F]">
+              <div className="w-16 h-16 bg-gradient-to-br from-[#FFC107] to-[#FF7043] rounded-full flex items-center justify-center mb-4">
+                <Sparkles className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-xl font-heading font-bold mb-2">Anime & Collectibles</h3>
+              <p className="text-muted-foreground font-body mb-4">
+                Exclusive anime merchandise, figures, and collectibles from popular series
+              </p>
+              <Link href="/store" className="text-[#D32F2F] font-body hover:gap-2 flex items-center gap-1 group">
+                Learn more <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+
+            {/* Feature Card 4 */}
+            <div className="bg-pink-50 rounded-2xl p-6 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border-2 border-transparent hover:border-[#D32F2F]">
+              <div className="w-16 h-16 bg-gradient-to-br from-[#8D6E63] to-[#FF7043] rounded-full flex items-center justify-center mb-4">
+                <Newspaper className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-xl font-heading font-bold mb-2">In-Depth Blog</h3>
+              <p className="text-muted-foreground font-body mb-4">
+                Expert reviews, guides, and insights on gaming, tech, and anime culture
+              </p>
+              <Link href="/blog" className="text-[#D32F2F] font-body hover:gap-2 flex items-center gap-1 group">
+                Learn more <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+
+            {/* Feature Card 5 */}
+            <div className="bg-pink-50 rounded-2xl p-6 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border-2 border-transparent hover:border-[#D32F2F]">
+              <div className="w-16 h-16 bg-gradient-to-br from-[#D32F2F] to-[#1976D2] rounded-full flex items-center justify-center mb-4">
+                <Heart className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-xl font-heading font-bold mb-2">Passionate Community</h3>
+              <p className="text-muted-foreground font-body mb-4">
+                Join thousands of passionate gamers and tech enthusiasts in our vibrant community
+              </p>
+              <Link href="/about" className="text-[#D32F2F] font-body hover:gap-2 flex items-center gap-1 group">
+                Learn more <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+
+            {/* Feature Card 6 */}
+            <div className="bg-pink-50 rounded-2xl p-6 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border-2 border-transparent hover:border-[#D32F2F]">
+              <div className="w-16 h-16 bg-gradient-to-br from-[#FF7043] to-[#FFC107] rounded-full flex items-center justify-center mb-4">
+                <Calendar className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-xl font-heading font-bold mb-2">Easy Sign-Ups</h3>
+              <p className="text-muted-foreground font-body mb-4">
+                Simple registration process for events and tournaments, get started in minutes
+              </p>
+              <Link href="/events" className="text-[#D32F2F] font-body hover:gap-2 flex items-center gap-1 group">
+                Learn more <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="py-20 px-4 bg-secondary/10">
+      {/* Section 4: Community Showcase */}
+      <section className="py-20 px-4 bg-[#121212] relative overflow-hidden">
+        {/* Subtle Pattern Overlay */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:50px_50px]" />
+        </div>
+
+        <div className="container mx-auto relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left: Photo Gallery */}
+            <div className="grid grid-cols-2 gap-4">
+              <div className="relative h-64 rounded-2xl overflow-hidden hover:scale-105 transition-transform shadow-lg">
+                <Image src={ladyGaming} alt="Community gaming" fill className="object-cover" />
+              </div>
+              <div className="relative h-80 rounded-2xl overflow-hidden hover:scale-105 transition-transform shadow-lg mt-8">
+                <Image src={gamingImage} alt="Esports tournament" fill className="object-cover" />
+              </div>
+              <div className="relative h-80 rounded-2xl overflow-hidden hover:scale-105 transition-transform shadow-lg">
+                <Image src={animeImage} alt="Anime community" fill className="object-cover" />
+              </div>
+              <div className="relative h-64 rounded-2xl overflow-hidden hover:scale-105 transition-transform shadow-lg mt-8">
+                <Image src={cyberpunkImage} alt="Gaming event" fill className="object-cover" />
+              </div>
+            </div>
+
+            {/* Right: Content */}
+            <div className="space-y-8 text-white">
+              <div className="inline-block">
+                <span className="px-4 py-2 bg-[#D32F2F] text-white text-sm font-semibold rounded-full font-heading">
+                  Join the Movement
+                </span>
+              </div>
+              
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-heading leading-tight">
+                Where Gaming <span className="text-[#D32F2F]">Passion</span> Meets Community Spirit
+              </h2>
+              
+              <p className="text-xl text-gray-300 font-body">
+                We're building more than a store we're creating an ecosystem where gamers, tech enthusiasts, 
+                and anime fans come together to share experiences, learn, compete, and grow.
+              </p>
+              
+              <div className="space-y-4">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-[#D32F2F] rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Zap className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-heading font-semibold text-lg mb-1">Real-Time Updates</h3>
+                    <p className="text-gray-300 font-body">Get instant notifications about tournaments, new products, and community events</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-[#FF7043] rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Gift className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-heading font-semibold text-lg mb-1">Exclusive Perks</h3>
+                    <p className="text-gray-300 font-body">Access member-only discounts, early product releases, and special events</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-[#1976D2] rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Handshake className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-heading font-semibold text-lg mb-1">All gamers Welcome</h3>
+                    <p className="text-gray-300 font-body">Whether you're a pro or just starting, find your place in our inclusive community</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button 
+                  asChild 
+                  className="bg-[#D32F2F] hover:bg-[#B71C1C] text-white font-body px-8 py-6 rounded-lg text-lg"
+                >
+                  <Link href="/events">Register for Next Event</Link>
+                </Button>
+                <Button 
+                  asChild 
+                  variant="outline"
+                  className="bg-transparent border-2 border-white text-white hover:bg-white/10 font-body px-8 py-6 rounded-lg text-lg"
+                >
+                  <Link href="/about">Learn More</Link>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 5: Blog Posts Grid */}
+      <section className="py-20 px-4 bg-gradient-to-b from-white to-pink-50">
         <div className="container mx-auto">
           <div className="text-center space-y-4 mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold">
-              Featured Blogs
+            <div className="inline-block mb-4">
+              <span className="px-4 py-2 bg-[#D32F2F] text-white text-sm font-semibold rounded-full font-heading">
+                Latest From The Blog
+              </span>
+            </div>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-heading text-foreground">
+              Stay Updated with <span className="text-[#D32F2F]">Tech, Gaming & Anime</span> Insights
             </h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Stay updated with the latest reviews, guides, and insights from our team
-            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredPosts.map((post) => (
-              <Card
+              <div 
                 key={post.id}
-                className="anime-gradient gaming-border gaming-border-hover glow-red-hover transition-all duration-300 hover:scale-105"
+                className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
               >
-                <div className="relative h-48 overflow-hidden rounded-t-xl">
-                  <img
-                      src={typeof post.image === "string" ? post.image : post.image?.src || "/placeholder.svg"}
-                      alt={post.title}
-                      className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
-                    />
-                </div>
-                <CardHeader>
-                  <div className="flex flex-wrap gap-2 mb-2">
-                    {post.tags.map((tag) => (
-                      <span key={tag} className="px-2 py-1 bg-destructive/20 text-xs rounded-full">
-                        {tag}
-                      </span>
-                    ))}
+                <div className="relative h-48 overflow-hidden">
+                  <Image
+                    src={post.image}
+                    alt={post.title}
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 bg-[#D32F2F] text-white text-xs font-semibold rounded-full font-heading">
+                      {post.category}
+                    </span>
                   </div>
-                  <CardTitle className="text-lg hover:text-primary transition-colors">
+                </div>
+                <div className="p-6">
+                  <div className="flex items-center gap-4 text-sm text-muted-foreground font-body mb-4">
+                    <span className="flex items-center gap-2">
+                      <Calendar className="w-4 h-4" /> {post.date}
+                    </span>
+                    <span className="flex items-center gap-2">
+                      <Clock className="w-4 h-4" /> {post.readTime}
+                    </span>
+                  </div>
+                  <h3 className="text-xl font-heading font-bold mb-3 hover:text-[#D32F2F] transition-colors">
                     <Link href={`/blog/${post.slug}`}>{post.title}</Link>
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground text-sm mb-4 line-clamp-3">{post.excerpt}</p>
-                  <p className="text-xs text-muted-foreground">{post.date}</p>
-                </CardContent>
-              </Card>
+                  </h3>
+                  <p className="text-muted-foreground font-body mb-4 line-clamp-3">{post.excerpt}</p>
+                  <Link 
+                    href={`/blog/${post.slug}`}
+                    className="text-[#D32F2F] font-body hover:gap-2 flex items-center gap-1 group"
+                  >
+                    Read More <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </div>
+              </div>
             ))}
           </div>
 
-          <div className="text-center pt-8">
-            <Button asChild size="lg" variant="outline" className="gaming-border-hover bg-transparent">
-              <Link href="/blog">View All Articles</Link>
+          <div className="text-center mt-12">
+            <Button 
+              asChild 
+              className="bg-[#D32F2F] hover:bg-[#B71C1C] text-white font-body px-8 py-6 rounded-lg text-lg"
+            >
+              <Link href="/blog">Explore All Articles</Link>
             </Button>
           </div>
         </div>
       </section>
 
-      <section className="py-20 px-4">
-        <div className="container mx-auto">
-          <div className="text-center space-y-4 mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold">
-              Visit Our Store
-            </h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Experience our products in person at our flagship location
-            </p>
+      {/* Section 6: Final CTA Banner */}
+      <section className="py-20 px-4 bg-[#D32F2F] relative overflow-hidden">
+        {/* Decorative Blur Circles */}
+        <div className="absolute top-0 left-0 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
+        
+        <div className="container mx-auto text-center relative z-10 space-y-8">
+          <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto">
+            <Gamepad2 className="w-10 h-10 text-white" />
           </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <Card className="anime-gradient gaming-border p-6">
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-6 h-6 icon-adapt text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold mb-2">Store Location</h3>
-                    <p className="text-muted-foreground mb-4">
-                      Lagos, 
-                      <br />
-                      Your premier destination for tech, gaming, and anime merchandise
-                    </p>
-                    <div className="space-y-2 text-sm">
-                      <p>
-                        <strong>Hours:</strong> Mon-Sat 10AM-8PM, Sun 12PM-6PM
-                      </p>
-                      <p>
-                        <strong>Phone:</strong> +1 (555) 123-4567
-                      </p>
-                      <p>
-                        <strong>Email:</strong> info@caseproperties.africa
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </Card>
-
-              <div className="space-y-4">
-                <h3 className="text-lg font-semibold">Why Visit Us?</h3>
-                <ul className="space-y-2 text-muted-foreground">
-                  <li className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-primary rounded-full"></div>
-                    <span>Hands-on testing of gaming peripherals</span>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-primary rounded-full"></div>
-                    <span>Expert advice from passionate staff</span>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-primary rounded-full"></div>
-                    <span>Exclusive in-store anime collectibles</span>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-primary rounded-full"></div>
-                    <span>Custom PC building services</span>
-                  </li>
-                </ul>
-              </div>
+          
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-heading text-white">
+            Ready to Join the Ultimate Gaming Community?
+          </h2>
+          
+          <p className="text-xl text-white/90 font-body max-w-2xl mx-auto">
+            Experience epic tournaments, exclusive tech deals, and connect with thousands of passionate gamers
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button 
+              asChild 
+              className="bg-white text-[#D32F2F] hover:bg-gray-100 font-body px-8 py-6 rounded-lg text-lg font-semibold"
+            >
+              <Link href="/events">Sign Up for Next Event</Link>
+            </Button>
+            <Button 
+              asChild 
+              variant="outline"
+              className="bg-transparent border-2 border-white text-white hover:bg-white/10 font-body px-8 py-6 rounded-lg text-lg"
+            >
+              <Link href="/store">Browse Our Store</Link>
+            </Button>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 max-w-4xl mx-auto">
+            <div className="flex items-center gap-2 text-white/90">
+              <CheckCircle className="w-5 h-5 text-white" />
+              <span className="font-body text-sm">Free Access</span>
             </div>
-
-            <div className="gaming-border rounded-xl overflow-hidden">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.662645162366!2d3.3504336633575362!3d6.564196583693521!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8d11b25b0d61%3A0xd7f900e8826c8e21!2sCase%20Properties%20Nigeria%20(GAMES%20PS5%2C%20PS4%2C%20PS3%2C%20XBOX%2C%20NINTENDO%2C%20LAPTOPS)!5e0!3m2!1sen!2sng!4v1758647269196!5m2!1sen!2sng"
-                width="100%"
-                height="400"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="w-full h-96"
-              />
+            <div className="flex items-center gap-2 text-white/90">
+              <CheckCircle className="w-5 h-5 text-white" />
+              <span className="font-body text-sm">All gamers</span>
+            </div>
+            <div className="flex items-center gap-2 text-white/90">
+              <CheckCircle className="w-5 h-5 text-white" />
+              <span className="font-body text-sm">Regular Events</span>
+            </div>
+            <div className="flex items-center gap-2 text-white/90">
+              <CheckCircle className="w-5 h-5 text-white" />
+              <span className="font-body text-sm">Expert Reviews</span>
             </div>
           </div>
         </div>
       </section>
 
-      <footer className="bg-secondary/20 border-t border-primary/20">
-        <div className="container mx-auto px-4 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="space-y-4">
-              <h3 className="text-xl font-bold">
-                Case Properties
-              </h3>
-              <p className="text-muted-foreground text-sm">
-                Your ultimate destination for tech, gaming, and anime merch.
-              </p>
-              <div className="flex space-x-4">
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                  <span className="sr-only">Facebook</span>
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                  </svg>
-                </a>
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                  <span className="sr-only">Twitter</span>
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
-                  </svg>
-                </a>
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                  <span className="sr-only">Instagram</span>
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z" />
-                  </svg>
-                </a>
-              </div>
-            </div>
-
-            <div className="space-y-4">
-              <h4 className="text-lg font-semibold">Quick Links</h4>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <Link href="/about" className="text-muted-foreground hover:text-primary transition-colors">
-                    About Us
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/blog" className="text-muted-foreground hover:text-primary transition-colors">
-                    Blog
-                  </Link>
-                </li>
-                <li>
-                  <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                    Products
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                    Contact
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div className="space-y-4">
-              <h4 className="text-lg font-semibold">Categories</h4>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                    Technology
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                    Gaming
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                    Anime
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                    Reviews
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div className="space-y-4">
-              <h4 className="text-lg font-semibold">Contact Info</h4>
-              <div className="space-y-2 text-sm text-muted-foreground">
-                <p>Lagos, Nigeria</p>
-                <p>Phone: +(234) 123-4567</p>
-                <p>Email: info@caseproperties.africa</p>
-                <p>
-                  Mon-Sat: 10AM-8PM
-                  <br />
-                  Sun: 12PM-6PM
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="border-t border-primary/20 mt-8 pt-8 text-center">
-            <p className="text-sm text-muted-foreground">
-              © 2025 TechAnime Store. All rights reserved. Built with passion for tech, gaming, and anime.
-            </p>
-          </div>
-        </div>
-      </footer>
+      {/* Section 7: Footer */}
+      <BlogFooter />
     </div>
   )
 }

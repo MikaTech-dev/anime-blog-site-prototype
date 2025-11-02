@@ -1,15 +1,25 @@
 import type React from "react"
 import type { Metadata } from "next"
 import SiteHeader from "@/components/site-header"
-import { GeistSans } from "geist/font/sans"
-import { GeistMono } from "geist/font/mono"
+import { Montserrat, Nunito } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
-import logo from "@/assets/CASE_PROPERTIES_LOGO_HD.png"
 import "./globals.css"
 
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  variable: "--font-montserrat",
+  display: "swap",
+})
+
+const nunito = Nunito({
+  subsets: ["latin"],
+  variable: "--font-nunito",
+  display: "swap",
+})
+
 export const metadata: Metadata = {
-  title: "Case Properties",
-  description: "Your ultimate destination for cutting-edge technology, gaming gear, and authentic anime merchandise",
+  title: "Case Blogs - Gaming & Tech Community Hub",
+  description: "Level up your gaming experience with premium tech, epic tournaments, anime collectibles, and a vibrant community",
   generator: "v0.app",
 }
 
@@ -19,9 +29,9 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="dark">
-      <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable} antialiased`}>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>
+    <html lang="en">
+      <body className={`${montserrat.variable} ${nunito.variable} font-body antialiased`}>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} disableTransitionOnChange>
           <SiteHeader />
           {children}
         </ThemeProvider>

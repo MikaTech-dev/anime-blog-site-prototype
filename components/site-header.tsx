@@ -4,110 +4,104 @@ import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import logo from "@/assets/CASE_PROPERTIES_LOGO_HD.png"
-import { useTheme } from "next-themes"
+import { Button } from "@/components/ui/button"
 
 export default function SiteHeader() {
   const [open, setOpen] = useState(false)
-  const { theme, setTheme } = useTheme()
-  const [mounted, setMounted] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
 
-  useEffect(() => setMounted(true), [])
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10)
+    }
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   return (
-    <header className="w-full sticky top-0 border-b border-primary/10 bg-background/60 backdrop-blur-sm z-50">
-      <div className="container mx-auto px-4 py-4 flex items-center relative">
-        {/* Left: logo */}
-        <div className="flex items-center flex-1">
-          <Link href="/" className="flex items-center gap-3">
-            <Image src={logo} alt="Case Properties" width={48} height={48} className="object-contain" />
-            <span className="font-bold">Case Properties</span>
-          </Link>
-        </div>
+    <header className={`w-full sticky top-0 z-50 bg-white shadow-md transition-all duration-300 ${scrolled ? "shadow-lg" : ""}`}>
+      <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-3">
+          <Image src={logo} alt="Case Blogs" width={48} height={48} className="object-contain" />
+          <span className="font-heading font-bold text-xl text-foreground">Case Blogs</span>
+        </Link>
 
-        {/* Center: navigation (horizontally centered) */}
-        <nav className="hidden md:block absolute left-1/2 transform -translate-x-1/2">
-          <ul className="flex items-center gap-6">
-            <li>
-              <Link href="/" className="text-sm text-muted-foreground hover:text-primary nav-link">
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link href="/blog" className="text-sm text-muted-foreground hover:text-primary nav-link">
-                Blog
-              </Link>
-            </li>
-            <li>
-              <Link href="/about" className="text-sm text-muted-foreground hover:text-primary nav-link">
-                About Us
-              </Link>
-            </li>
-          </ul>
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center gap-8">
+          <Link href="/about" className="text-sm text-muted-foreground hover:text-primary transition-colors font-body">
+            About Us
+          </Link>
+          <Link href="/store" className="text-sm text-muted-foreground hover:text-primary transition-colors font-body">
+            Store
+          </Link>
+          <Link href="/events" className="text-sm text-muted-foreground hover:text-primary transition-colors font-body">
+            Events
+          </Link>
+          <Link href="/blog" className="text-sm text-muted-foreground hover:text-primary transition-colors font-body">
+            Blog
+          </Link>
+          <Button asChild className="bg-primary hover:bg-[#B71C1C] text-white font-body px-6 py-2 rounded-lg">
+            <Link href="/join">Join our community</Link>
+          </Button>
         </nav>
 
-        {/* Right: theme toggle + mobile hamburger */}
-        <div className="flex items-center justify-end gap-4 flex-1">
+        {/* Mobile Hamburger */}
+        <div className="md:hidden">
           <button
-            aria-label="Toggle light mode"
-            onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-            className="p-2 rounded-md border border-primary/10 bg-background/30 hover:bg-primary/5 theme-toggle"
+            aria-label="Toggle menu"
+            onClick={() => setOpen((s) => !s)}
+            className="p-2 rounded-md text-foreground focus:outline-none"
           >
-            {mounted ? (
-              theme === "light" ? (
-                <svg className="w-5 h-5 icon-adapt" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                  <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M12 3v2M12 19v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" />
-                  <circle cx="12" cy="12" r="3" strokeWidth="2" />
-                </svg>
-              ) : (
-                <svg className="w-5 h-5 icon-adapt" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                  <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
-                </svg>
-              )
+            {open ? (
+              <i className="fas fa-times text-2xl"></i>
             ) : (
-              <svg className="w-5 h-5 icon-adapt" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                <circle cx="12" cy="12" r="3" strokeWidth="2" />
-              </svg>
+              <i className="fas fa-bars text-2xl"></i>
             )}
           </button>
 
-            {/* Mobile hamburger */}
-            <div className="md:hidden">
-            <button
-              aria-label="Toggle menu"
-              onClick={() => setOpen((s) => !s)}
-              className="p-2 rounded-md text-border hover:text-primary focus:outline-none"
-            >
-              <svg className="w-6 h-6 text-muted-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-              {open ? (
-                <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-              )}
-              </svg>
-            </button>
-
-            {open && (
-              <div className="absolute right-4 top-16 z-60 w-48 bg-background border border-primary/10 rounded-md shadow-lg">
-              <ul className="flex flex-col">
-                <li>
-                <Link href="/" className="block px-4 py-3 text-sm text-muted-foreground hover:bg-primary/5 nav-link">
-                  Home
-                </Link>
-                </li>
-                <li>
-                <Link href="/blog" className="block px-4 py-3 text-sm text-muted-foreground hover:bg-primary/5 nav-link">
-                  Blog
-                </Link>
-                </li>
-                <li>
-                <Link href="/about" className="block px-4 py-3 text-sm text-muted-foreground hover:bg-primary/5 nav-link">
+          {/* Mobile Menu */}
+          {open && (
+            <div className="absolute top-full left-0 right-0 bg-white shadow-lg border-t">
+              <div className="flex flex-col p-4 space-y-4">
+                <Link 
+                  href="/about" 
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors font-body py-2"
+                  onClick={() => setOpen(false)}
+                >
                   About Us
                 </Link>
-                </li>
-              </ul>
+                <Link 
+                  href="/store" 
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors font-body py-2"
+                  onClick={() => setOpen(false)}
+                >
+                  Store
+                </Link>
+                <Link 
+                  href="/events" 
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors font-body py-2"
+                  onClick={() => setOpen(false)}
+                >
+                  Events
+                </Link>
+                <Link 
+                  href="/blog" 
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors font-body py-2"
+                  onClick={() => setOpen(false)}
+                >
+                  Blog
+                </Link>
+                <Button 
+                  asChild 
+                  className="bg-primary hover:bg-[#B71C1C] text-white font-body px-6 py-2 rounded-lg mt-2"
+                  onClick={() => setOpen(false)}
+                >
+                  <Link href="/join">Join our community</Link>
+                </Button>
               </div>
-            )}
             </div>
+          )}
         </div>
       </div>
     </header>
