@@ -167,7 +167,7 @@ export default function HomePage() {
         <div className="container mx-auto">
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-heading text-foreground">
-              Why Case Blogs is Your Ultimate Gaming Destination
+              Why Case Blogs is THE best place for Gamers
             </h2>
             <p className="text-lg text-muted-foreground font-body max-w-2xl mx-auto">
               More than a store, we're your gaming community hub where passion meets premium tech
@@ -291,16 +291,16 @@ export default function HomePage() {
             <div className="space-y-8 text-white">
               <div className="inline-block">
                 <span className="px-4 py-2 bg-[#D32F2F] text-white text-sm font-semibold rounded-full font-heading">
-                  Join the Movement
+                  Join Our Cause
                 </span>
               </div>
               
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-heading leading-tight">
-                Where Gaming <span className="text-[#D32F2F]">Passion</span> Meets Community Spirit
+                Where Gaming <span className="text-[#D32F2F]">Passion</span> Meets Community
               </h2>
               
               <p className="text-xl text-gray-300 font-body">
-                We're building more than a store we're creating an ecosystem where gamers, tech enthusiasts, 
+                We're don't just want to be a store, we want to create an ecosystem where gamers, tech enthusiasts, 
                 and anime fans come together to share experiences, learn, compete, and grow.
               </p>
               
@@ -436,11 +436,11 @@ export default function HomePage() {
           </div>
           
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-heading text-white">
-            Ready to Join the Ultimate Gaming Community?
+            Ready to Join the Best Gaming Community in Nigeria?
           </h2>
           
           <p className="text-xl text-white/90 font-body max-w-2xl mx-auto">
-            Experience epic tournaments, exclusive tech deals, and connect with thousands of passionate gamers
+            Experience epic tournaments, exclusive prices, and connect with thousands of passionate gamers in Nigeria
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -466,7 +466,7 @@ export default function HomePage() {
             </div>
             <div className="flex items-center gap-2 text-white/90">
               <CheckCircle className="w-5 h-5 text-white" />
-              <span className="font-body text-sm">All gamers</span>
+              <span className="font-body text-sm">For all Gamers</span>
             </div>
             <div className="flex items-center gap-2 text-white/90">
               <CheckCircle className="w-5 h-5 text-white" />
