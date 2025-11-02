@@ -12,9 +12,10 @@ import gamingImage from "@/assets/gaming-consoles-futuristic-technology.png"
 import animeImage from "@/assets/anime-characters-colorful-scene.png"
 import cyberpunkImage from "@/assets/cyberpunk-futuristic-city-neon-lights.png"
 import ladyGaming from "@/assets/lady-gaming.jpg"
-import eldenRingImage from "@/assets/elden-ring-fantasy-landscape-dark-souls.png"
-import demonSlayerImage from "@/assets/demon-slayer-animation-fire-effects.png"
-import blogImage from "@/assets/blog-1660679033240.jpg"
+import guy1gaming from "@/assets/gamr.jpeg"
+import guy2gaming from "@/assets/publicContain.jpg"
+import gamingImage3 from "@/assets/publicCopy.jpg"
+import africaesports from "@/assets/public.png"
 
 interface FeaturedPost {
   id: string
@@ -273,16 +274,16 @@ export default function HomePage() {
             {/* Left: Photo Gallery */}
             <div className="grid grid-cols-2 gap-4">
               <div className="relative h-64 rounded-2xl overflow-hidden hover:scale-105 transition-transform shadow-lg">
-                <Image src={ladyGaming} alt="Community gaming" fill className="object-cover" />
+                <Image src={guy1gaming} alt="Community gaming" fill className="object-cover" />
               </div>
               <div className="relative h-80 rounded-2xl overflow-hidden hover:scale-105 transition-transform shadow-lg mt-8">
-                <Image src={gamingImage} alt="Esports tournament" fill className="object-cover" />
+                <Image src={guy2gaming} alt="Esports tournament" fill className="object-cover" />
               </div>
               <div className="relative h-80 rounded-2xl overflow-hidden hover:scale-105 transition-transform shadow-lg">
-                <Image src={animeImage} alt="Anime community" fill className="object-cover" />
+                <Image src={gamingImage3} alt="Anime community" fill className="object-cover" />
               </div>
               <div className="relative h-64 rounded-2xl overflow-hidden hover:scale-105 transition-transform shadow-lg mt-8">
-                <Image src={cyberpunkImage} alt="Gaming event" fill className="object-cover" />
+                <Image src={africaesports} alt="Gaming event" fill className="object-cover" />
               </div>
             </div>
 
