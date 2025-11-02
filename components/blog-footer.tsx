@@ -60,33 +60,33 @@ export function BlogFooter() {
                   <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" /> About
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link href="/store" className="text-gray-400 hover:text-[#D32F2F] transition-colors flex items-center gap-2 group">
                   <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" /> Store
                 </Link>
-              </li>
-              <li>
+              </li> */}
+              {/* <li>
                 <Link href="/events" className="text-gray-400 hover:text-[#D32F2F] transition-colors flex items-center gap-2 group">
                   <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" /> Events
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link href="/blog" className="text-gray-400 hover:text-[#D32F2F] transition-colors flex items-center gap-2 group">
                   <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" /> Blog
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link href="/contact" className="text-gray-400 hover:text-[#D32F2F] transition-colors flex items-center gap-2 group">
                   <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" /> Contact
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
 
           <div className="space-y-4">
             <h4 className="text-lg font-semibold font-heading">Categories</h4>
             <ul className="space-y-2 text-sm font-body">
-              <li>
+              {/* <li>
                 <Link href="/store?category=gaming" className="text-gray-400 hover:text-[#D32F2F] transition-colors flex items-center gap-2">
                   <Gamepad2 className="w-3 h-3" /> Gaming Gear
                 </Link>
@@ -105,7 +105,7 @@ export function BlogFooter() {
                 <Link href="/events" className="text-gray-400 hover:text-[#D32F2F] transition-colors flex items-center gap-2">
                   <Trophy className="w-3 h-3" /> Tournaments
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link href="/blog?category=tech" className="text-gray-400 hover:text-[#D32F2F] transition-colors flex items-center gap-2">
                   <Cpu className="w-3 h-3" /> Tech Reviews

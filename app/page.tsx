@@ -104,14 +104,14 @@ export default function HomePage() {
                   asChild 
                   className="bg-[#D32F2F] hover:bg-[#B71C1C] text-white font-body px-8 py-6 rounded-lg text-lg"
                 >
-                  <Link href="/events">Claim Your Spot</Link>
+                  <Link href="http://casegames.africa/">Claim Your Spot</Link>
                 </Button>
                 <Button 
                   asChild 
                   variant="outline"
                   className="bg-transparent border-2 border-white text-white hover:bg-white/10 font-body px-8 py-6 rounded-lg text-lg"
                 >
-                  <Link href="/store">Browse Premium Gear</Link>
+                  <Link href="http://casegames.africa/">Browse Premium Gear</Link>
                 </Button>
               </div>
               
@@ -184,7 +184,7 @@ export default function HomePage() {
               <p className="text-muted-foreground font-body mb-4">
                 Compete in monthly gaming tournaments with amazing prizes and recognition
               </p>
-              <Link href="/events" className="text-[#D32F2F] font-body hover:gap-2 flex items-center gap-1 group">
+              <Link href="http://casegames.africa/" className="text-[#D32F2F] font-body hover:gap-2 flex items-center gap-1 group">
                 Learn more <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
@@ -198,7 +198,7 @@ export default function HomePage() {
               <p className="text-muted-foreground font-body mb-4">
                 Latest phones, laptops, and gaming hardware at competitive prices
               </p>
-              <Link href="/store" className="text-[#D32F2F] font-body hover:gap-2 flex items-center gap-1 group">
+              <Link href="http://casegames.africa/" className="text-[#D32F2F] font-body hover:gap-2 flex items-center gap-1 group">
                 Learn more <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
@@ -212,7 +212,7 @@ export default function HomePage() {
               <p className="text-muted-foreground font-body mb-4">
                 Exclusive anime merchandise, figures, and costumes from popular series
               </p>
-              <Link href="/store" className="text-[#D32F2F] font-body hover:gap-2 flex items-center gap-1 group">
+              <Link href="http://casegames.africa/" className="text-[#D32F2F] font-body hover:gap-2 flex items-center gap-1 group">
                 Learn more <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
@@ -240,7 +240,7 @@ export default function HomePage() {
               <p className="text-muted-foreground font-body mb-4">
                 Join thousands of passionate gamers and tech enthusiasts in our vibrant community
               </p>
-              <Link href="/about" className="text-[#D32F2F] font-body hover:gap-2 flex items-center gap-1 group">
+              <Link href="https://www.instagram.com/case_properties" className="text-[#D32F2F] font-body hover:gap-2 flex items-center gap-1 group">
                 Learn more <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
@@ -254,7 +254,7 @@ export default function HomePage() {
               <p className="text-muted-foreground font-body mb-4">
                 Simple registration process for events and tournaments, get started in minutes
               </p>
-              <Link href="/events" className="text-[#D32F2F] font-body hover:gap-2 flex items-center gap-1 group">
+              <Link href="http://casegames.africa/" className="text-[#D32F2F] font-body hover:gap-2 flex items-center gap-1 group">
                 Learn more <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
@@ -300,7 +300,7 @@ export default function HomePage() {
               </h2>
               
               <p className="text-xl text-gray-300 font-body">
-                We're don't just want to be a store, we want to create an ecosystem where gamers, tech enthusiasts, 
+                We don't just want to be a store, we want to create an ecosystem where gamers, tech enthusiasts, 
                 and anime fans come together to share experiences, learn, compete, and grow.
               </p>
               
@@ -341,7 +341,7 @@ export default function HomePage() {
                   asChild 
                   className="bg-[#D32F2F] hover:bg-[#B71C1C] text-white font-body px-8 py-6 rounded-lg text-lg"
                 >
-                  <Link href="/events">Register for Next Event</Link>
+                  <Link href="http://casegames.africa/">Register for Next Event</Link>
                 </Button>
                 <Button 
                   asChild 
@@ -448,14 +448,14 @@ export default function HomePage() {
               asChild 
               className="bg-white text-[#D32F2F] hover:bg-gray-100 font-body px-8 py-6 rounded-lg text-lg font-semibold"
             >
-              <Link href="/events">Sign Up for Next Event</Link>
+              <Link href="http://casegames.africa/">Sign Up for Next Event</Link>
             </Button>
             <Button 
               asChild 
               variant="outline"
               className="bg-transparent border-2 border-white text-white hover:bg-white/10 font-body px-8 py-6 rounded-lg text-lg"
             >
-              <Link href="/store">Browse Our Store</Link>
+              <Link href="http://casegames.africa/">Browse Our Store</Link>
             </Button>
           </div>
           
