@@ -29,20 +29,23 @@ export default function SiteHeader() {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8">
+          <Link href="/" className="text-sm text-muted-foreground hover:text-primary transition-colors font-body">
+            Home
+          </Link>
           <Link href="/about" className="text-sm text-muted-foreground hover:text-primary transition-colors font-body">
             About Us
           </Link>
-          <Link href="/store" className="text-sm text-muted-foreground hover:text-primary transition-colors font-body">
+          {/* <Link href="/store" className="text-sm text-muted-foreground hover:text-primary transition-colors font-body">
             Store
-          </Link>
-          <Link href="/events" className="text-sm text-muted-foreground hover:text-primary transition-colors font-body">
+          </Link> */}
+          {/* <Link href="/events" className="text-sm text-muted-foreground hover:text-primary transition-colors font-body">
             Events
-          </Link>
+          </Link> */}
           <Link href="/blog" className="text-sm text-muted-foreground hover:text-primary transition-colors font-body">
             Blog
           </Link>
           <Button asChild className="bg-primary hover:bg-[#B71C1C] text-white font-body px-6 py-2 rounded-lg">
-            <Link href="/join">Join our community</Link>
+            <Link href="https://www.instagram.com/case_properties">Join our community</Link>
           </Button>
         </nav>
 

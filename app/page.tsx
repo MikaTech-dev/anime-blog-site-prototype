@@ -41,7 +41,7 @@ const featuredPosts: FeaturedPost[] = [
   {
     id: "2",
     title: "Top Anime Merchandise This Season",
-    excerpt: "From collectible figures to limited edition apparel, explore the hottest anime merchandise available now.",
+    excerpt: "From collectible figures to clothes, explore the hottest anime merchandise available now.",
     image: animeImage,
     category: "Anime Culture",
     date: "Dec 12, 2024",
@@ -181,7 +181,7 @@ export default function HomePage() {
               </div>
               <h3 className="text-xl font-heading font-bold mb-2">Regular Tournaments</h3>
               <p className="text-muted-foreground font-body mb-4">
-                Compete in weekly gaming tournaments with amazing prizes and recognition
+                Compete in monthly gaming tournaments with amazing prizes and recognition
               </p>
               <Link href="/events" className="text-[#D32F2F] font-body hover:gap-2 flex items-center gap-1 group">
                 Learn more <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -195,7 +195,7 @@ export default function HomePage() {
               </div>
               <h3 className="text-xl font-heading font-bold mb-2">Premium Tech</h3>
               <p className="text-muted-foreground font-body mb-4">
-                Latest gaming hardware, peripherals, and tech innovations at competitive prices
+                Latest phones, laptops, and gaming hardware at competitive prices
               </p>
               <Link href="/store" className="text-[#D32F2F] font-body hover:gap-2 flex items-center gap-1 group">
                 Learn more <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -209,7 +209,7 @@ export default function HomePage() {
               </div>
               <h3 className="text-xl font-heading font-bold mb-2">Anime & Collectibles</h3>
               <p className="text-muted-foreground font-body mb-4">
-                Exclusive anime merchandise, figures, and collectibles from popular series
+                Exclusive anime merchandise, figures, and costumes from popular series
               </p>
               <Link href="/store" className="text-[#D32F2F] font-body hover:gap-2 flex items-center gap-1 group">
                 Learn more <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
