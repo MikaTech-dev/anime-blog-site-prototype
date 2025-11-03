@@ -455,7 +455,7 @@ export default function HomePage() {
               variant="outline"
               className="bg-transparent border-2 border-white text-white hover:bg-white/10 font-body px-8 py-6 rounded-lg text-lg"
             >
-              <Link href="http://casegames.africa/">Browse Our Store</Link>
+              <Link href="http://caseproperties.africa/">Browse Our Store</Link>
             </Button>
           </div>
           

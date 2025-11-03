@@ -5,6 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import logo from "@/assets/CASE_PROPERTIES_LOGO_HD.png"
 import { Button } from "@/components/ui/button"
+import { Menu, X } from "lucide-react"
 
 export default function SiteHeader() {
   const [open, setOpen] = useState(false)
@@ -57,9 +58,9 @@ export default function SiteHeader() {
             className="p-2 rounded-md text-foreground focus:outline-none"
           >
             {open ? (
-              <i className="fas fa-times text-2xl"></i>
+              < X className="w-8 h-8 text-black"/>
             ) : (
-              <i className="fas fa-bars text-2xl"></i>
+              < Menu className="w-8 h-8 text-black" />
             )}
           </button>
 
