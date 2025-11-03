@@ -1,26 +1,27 @@
 import Link from "next/link"
 import Image from "next/image"
 import animeImage from "@/assets/anime-characters-colorful-scene.png"
+import profilePhoto from "@/assets/Ayumu Osaka Kasuga.jpg"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 import { Textarea } from "@/components/ui/textarea"
-import { ArrowLeft, Calendar, Eye, MessageCircle, Share2, ThumbsUp, Send } from "lucide-react"
+import { ArrowLeft, Calendar, Eye, MessageCircle, Share2, ThumbsUp, Send, UserMinus } from "lucide-react"
 
 // Mock comments data
 const mockComments = [
   {
     id: 1,
-    author: "OtakuMaster99",
-    avatar: "/avatars/otaku.jpg",
+    author: "progamer67",
+    avatar: profilePhoto,
     content: "This analysis is spot on! The animation in the latest season was insane",
     date: "2 hours ago",
     likes: 42,
     replies: [
       {
         id: 11,
-        author: "AnimeFan2024",
-        avatar: "/avatars/fan.jpg",
+        author: "Jaramaster5000",
+        avatar: profilePhoto,
         content: "I don't know man that garou slide animation was horrible 😭",
         date: "1 hour ago",
         likes: 15
@@ -29,8 +30,8 @@ const mockComments = [
   },
   {
     id: 2,
-    author: "GamingGuru",
-    avatar: "/avatars/guru.jpg",
+    author: "FoolyCooly",
+    avatar: profilePhoto,
     content: "Great breakdown of the story elements. Really helped me understand some more stuff about them.",
     date: "5 hours ago",
     likes: 28,
@@ -117,7 +118,7 @@ export function BlogPostView({ slug }: BlogPostViewProps) {
   return (
     <article className="min-h-screen bg-background">
       {/* Hero Section with Title */}
-      <div className="relative h-[40vh] min-h-[400px] w-full bg-black">
+      <div className="relative h-dvh w-full bg-black">
         <Image
           src={mockPost.image}
           alt={mockPost.title}
@@ -125,7 +126,12 @@ export function BlogPostView({ slug }: BlogPostViewProps) {
           className="object-cover opacity-50"
           priority
         />
-        <div className="container mx-auto px-4 h-full flex flex-col justify-end pb-12">
+        {/* CHANGES HERE:
+          1. Added `relative z-10` to make sure this container is above the `fill` Image.
+          2. Removed `mt-16` and `pt-24` from the outer div.
+          3. Added `pt-24` (to clear your header) and increased `pb-12` to `pb-24` for more padding.
+        */}
+        <div className="container relative z-10 mx-auto px-4 h-full flex flex-col justify-end pt-24 pb-24">
           {/* Back button */}
           <div className="mb-8">
             <Button asChild variant="ghost" className="gaming-border-hover text-white bg-background/20 backdrop-blur-sm">
@@ -137,7 +143,8 @@ export function BlogPostView({ slug }: BlogPostViewProps) {
           </div>
           
           {/* Hero content */}
-          <div className="max-w-4xl z-10">
+          {/* CHANGE: Removed redundant `z-10` from here */}
+          <div className="max-w-4xl">
             <div className="flex flex-wrap gap-2 mb-4">
               {mockPost.tags.map((tag) => (
                 <Badge key={tag} variant="destructive" className="text-sm">
@@ -247,7 +254,7 @@ export function BlogPostView({ slug }: BlogPostViewProps) {
                     className="gaming-border bg-background/50"
                   />
                   <div className="flex justify-end">
-                    <Button className="gaming-border-hover">
+                    <Button className="gaming-border-hover cursor-pointer">
                       <Send className="w-4 h-4 mr-2" />
                       Post Comment
                     </Button>
@@ -276,11 +283,7 @@ export function BlogPostView({ slug }: BlogPostViewProps) {
                           </div>
                           <p className="text-foreground mb-4">{comment.content}</p>
                           <div className="flex items-center gap-4">
-                            <Button variant="ghost" size="sm" className="gaming-border-hover">
-                              <ThumbsUp className="w-4 h-4 mr-2" />
-                              {comment.likes}
-                            </Button>
-                            <Button variant="ghost" size="sm" className="gaming-border-hover">
+                            <Button variant="ghost" size="sm" className="gaming-border-hover cursor-pointer">
                               Reply
                             </Button>
                           </div>
@@ -291,7 +294,7 @@ export function BlogPostView({ slug }: BlogPostViewProps) {
                               {comment.replies.map((reply) => (
                                 <div key={reply.id} className="mt-4">
                                   <div className="flex items-start gap-4">
-                                    <div className="relative w-8 h-8 rounded-full overflow-hidden gaming-border">
+                                    <div className="relative w-8 h-8 rounded-full overflow-hidden gaming-border cursor-pointer">
                                       <Image
                                         src={reply.avatar}
                                         alt={reply.author}
@@ -305,9 +308,8 @@ export function BlogPostView({ slug }: BlogPostViewProps) {
                                         <span className="text-sm text-muted-foreground">{reply.date}</span>
                                       </div>
                                       <p className="text-foreground mb-2">{reply.content}</p>
-                                      <Button variant="ghost" size="sm" className="gaming-border-hover">
-                                        <ThumbsUp className="w-4 h-4 mr-2" />
-                                        {reply.likes}
+                                      <Button variant="ghost" size="sm" className="gaming-border-hover cursor-pointer">
+                                        Reply
                                       </Button>
                                     </div>
                                   </div>
@@ -340,8 +342,7 @@ export function BlogPostView({ slug }: BlogPostViewProps) {
                   </div>
                 </div>
                 <p className="text-sm text-muted-foreground">
-                  Passionate about anime and gaming culture, bringing you the latest reviews and insights from the otaku
-                  world.
+                  Passionate about anime and gaming, bringing you the latest gist and insights from around the world.
                 </p>
               </CardContent>
             </Card>
