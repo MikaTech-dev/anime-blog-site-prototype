@@ -164,7 +164,7 @@ export default function HomePage() {
             transition={{ delay: 0.8, duration: 0.8 }}
             className="mt-8 text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto font-light"
           >
-            The premier destination for high-end tech, competitive gaming, and anime culture in Nigeria.
+            The BEST destination for high-end tech, competitive gaming, and proper anime culture in Nigeria.
           </motion.p>
 
           <motion.div 
