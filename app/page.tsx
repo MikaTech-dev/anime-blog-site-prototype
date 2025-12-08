@@ -153,7 +153,7 @@ export default function HomePage() {
                 <motion.span variants={revealText} className="block">LEVEL UP</motion.span>
               </div>
               <div className="overflow-hidden">
-                <motion.span variants={revealText} className="block text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-500">YOUR GAME</motion.span>
+                <motion.span variants={revealText} className="block text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-500">YOUR GAME!</motion.span>
               </div>
             </motion.h1>
           </div>
@@ -164,7 +164,7 @@ export default function HomePage() {
             transition={{ delay: 0.8, duration: 0.8 }}
             className="mt-8 text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto font-light"
           >
-            The BEST destination for high-end tech, competitive gaming, and proper anime culture in Nigeria.
+            The Number #1 destination for high-end tech, competitive gaming, and proper anime culture in Nigeria.
           </motion.p>
 
           <motion.div 
