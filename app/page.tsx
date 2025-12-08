@@ -153,7 +153,7 @@ export default function HomePage() {
                 <motion.span variants={revealText} className="block">LEVEL UP</motion.span>
               </div>
               <div className="overflow-hidden">
-                <motion.span variants={revealText} className="block text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-500">YOUR REALITY</motion.span>
+                <motion.span variants={revealText} className="block text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-500">YOUR GAME</motion.span>
               </div>
             </motion.h1>
           </div>
