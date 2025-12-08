@@ -1,88 +1,97 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef } from "react"
+import Link from "next/link"
+import { useSearchParams } from "next/navigation"
+import { motion } from "framer-motion"
+import { Search, X, Hash } from "lucide-react"
+import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { 
-  Grid3x3, Star, Gamepad2, Cpu, Newspaper, BookOpen 
-} from "lucide-react"
 
 const categories = [
-  { name: "All", count: 156, icon: Grid3x3 },
-  { name: "Anime", count: 64, icon: Star },
-  { name: "Gaming", count: 48, icon: Gamepad2 },
-  { name: "Tech Review", count: 32, icon: Cpu },
-  { name: "News", count: 28, icon: Newspaper },
-  { name: "Guides", count: 24, icon: BookOpen },
+  { id: "all", label: "All Feeds", href: "/blog" },
+  { id: "tech", label: "Tech News", href: "/blog?category=tech" },
+  { id: "gaming", label: "Gaming", href: "/blog?category=gaming" },
+  { id: "anime", label: "Anime", href: "/blog?category=anime" },
+  { id: "guides", label: "Youtube Guides & Playthrouhs", href: "/blog?category=guides" },
 ]
 
 export function BlogNavigation() {
-  const [activeCategory, setActiveCategory] = useState("All")
+  const searchParams = useSearchParams()
+  const currentCategory = searchParams.get("category") || "all"
+  const [isSearchOpen, setIsSearchOpen] = useState(false)
+  const inputRef = useRef<HTMLInputElement>(null)
+
+  const toggleSearch = () => {
+    setIsSearchOpen(!isSearchOpen)
+    if (!isSearchOpen) {
+      setTimeout(() => inputRef.current?.focus(), 100)
+    }
+  }
 
   return (
-    <nav className="bg-gradient-to-b from-white to-pink-50 py-12 px-4">
-      <div className="container mx-auto">
-        <div className="text-center mb-8">
-          <h3 className="text-2xl md:text-3xl font-heading font-bold text-foreground mb-2">
-            Browse by Category
-          </h3>
-          <p className="text-muted-foreground font-body">
-            Filter posts by topic to find exactly what you're looking for
-          </p>
-        </div>
+    <div className="sticky top-[72px] z-40 w-full bg-[#050505]/80 backdrop-blur-md border-b border-white/5">
+      <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         
-        <div className="flex flex-wrap gap-4 justify-center max-w-5xl mx-auto">
-          {categories.map((category) => {
-            const Icon = category.icon
-            const isActive = activeCategory === category.name
+        {/* Category Scroll Area */}
+        <div className="flex items-center gap-1 overflow-x-auto no-scrollbar mask-gradient flex-1 mr-4">
+          {categories.map((cat) => {
+            const isActive = currentCategory === cat.id || (cat.id === "all" && !searchParams.get("category"))
             
             return (
-              <button
-                key={category.name}
-                onClick={() => setActiveCategory(category.name)}
-                className={`
-                  group relative flex items-center gap-3 px-6 py-4 rounded-2xl
-                  transition-all duration-300 font-body
-                  ${
-                    isActive
-                      ? "bg-[#D32F2F] text-white shadow-lg shadow-[#D32F2F]/30 scale-105"
-                      : "bg-white text-gray-700 hover:bg-pink-50 hover:shadow-md border border-gray-200"
-                  }
-                `}
+              <Link 
+                key={cat.id} 
+                href={cat.href}
+                className="relative px-4 py-2 flex-shrink-0 group"
               >
-                <div className={`
-                  w-10 h-10 rounded-full flex items-center justify-center transition-colors
-                  ${
-                    isActive
-                      ? "bg-white/20 text-white"
-                      : "bg-pink-100 text-[#D32F2F] group-hover:bg-[#D32F2F] group-hover:text-white"
-                  }
-                `}>
-                  <Icon className="w-5 h-5" />
-                </div>
+                <span className={`text-sm font-bold uppercase tracking-wider transition-colors duration-300 ${
+                  isActive ? "text-white" : "text-gray-500 hover:text-gray-300"
+                }`}>
+                  {cat.label}
+                </span>
                 
-                <div className="flex flex-col items-start">
-                  <span className={`font-semibold text-sm ${isActive ? "text-white" : "text-foreground"}`}>
-                    {category.name}
-                  </span>
-                  <span className={`
-                    text-xs
-                    ${isActive ? "text-white/80" : "text-muted-foreground"}
-                  `}>
-                    {category.count} posts
-                  </span>
-                </div>
-                
+                {/* Active Indicator */}
                 {isActive && (
-                  <div className="absolute -top-1 -right-1 w-4 h-4 bg-white rounded-full flex items-center justify-center">
-                    <div className="w-2 h-2 bg-[#D32F2F] rounded-full"></div>
-                  </div>
+                  <motion.div 
+                    layoutId="activeTab"
+                    className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#D32F2F]"
+                    initial={false}
+                    transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                  />
                 )}
-              </button>
+              </Link>
             )
           })}
         </div>
+
+        {/* Search Module */}
+        <div className="flex items-center">
+          <motion.div 
+            initial={false}
+            animate={{ width: isSearchOpen ? "auto" : 0, opacity: isSearchOpen ? 1 : 0 }}
+            className="overflow-hidden mr-2"
+          >
+            <div className="relative w-full max-w-[200px] md:max-w-[300px]">
+               <Input 
+                 ref={inputRef}
+                 type="text" 
+                 placeholder="SEARCH DATABASE..." 
+                 className="h-9 bg-white/10 border-transparent focus:border-[#D32F2F] text-white text-xs font-mono rounded-none placeholder:text-gray-500 w-full"
+               />
+            </div>
+          </motion.div>
+
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            onClick={toggleSearch}
+            className="text-gray-400 hover:text-white hover:bg-white/10 rounded-none w-9 h-9"
+          >
+            {isSearchOpen ? <X size={18} /> : <Search size={18} />}
+          </Button>
+        </div>
+
       </div>
-    </nav>
+    </div>
   )
 }

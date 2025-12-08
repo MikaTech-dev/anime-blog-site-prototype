@@ -193,13 +193,17 @@ export default function HomePage() {
           {[...Array(2)].map((_, i) => (
             <div key={i} className="flex gap-12 shrink-0">
                <span>• Gaming Tournaments</span>
-               <span>• Tech Marketplace</span>
-               <span>• Anime Collectibles</span>
+               <span>• Tech for sale</span>
+               <span>• Anime Merch</span>
                <span>• Community Hub</span>
                <span>• Gaming Tournaments</span>
-               <span>• Tech Marketplace</span>
-               <span>• Anime Collectibles</span>
-               <span>• Community Hub</span>
+               <span>• Consoles</span>
+               <span>• Gaming Laptops</span>
+               <span>• Tech news and reviews</span>
+               <span>• Nigerian Esports</span>
+               <span>• Xbox</span>
+               <span>• Playstation</span>
+               #<span>• Nintendo</span>
             </div>
           ))}
         </motion.div>
@@ -219,7 +223,7 @@ export default function HomePage() {
               >
                 BUILT FOR <span className="text-[#D32F2F]">ENTHUSIASTS</span>
               </motion.h2>
-              <p className="text-lg text-slate-600">More than a store. We are an ecosystem designed for those who live on the cutting edge.</p>
+              <p className="text-lg text-slate-600">More than a store. We are an ecosystem designed for those who yearn for more tech inclusivity in Nigeria.</p>
             </div>
             <div className="hidden md:block pb-2">
                <ArrowRight className="w-12 h-12 text-[#D32F2F] -rotate-45" />
@@ -242,7 +246,7 @@ export default function HomePage() {
                 <Gamepad2 className="w-6 h-6 text-black group-hover:text-white" />
               </div>
               <h3 className="text-2xl font-bold mb-3 uppercase">Pro Tournaments</h3>
-              <p className="text-slate-600 group-hover:text-gray-300 mb-6">Regular cash-prize tournaments for FC24, COD, and Tekken. Prove your skills.</p>
+              <p className="text-slate-600 group-hover:text-gray-300 mb-6">Regular cash-prize tournaments for FC25...67, COD, and Tekken. Come and show workings!!</p>
               <Link href="http://casegames.africa/" className="flex items-center gap-2 text-[#D32F2F] group-hover:text-white font-bold text-sm uppercase tracking-wider">
                 Register Now <ArrowRight size={16} />
               </Link>
@@ -257,7 +261,7 @@ export default function HomePage() {
                 <Sparkles className="w-6 h-6 text-black group-hover:text-white" />
               </div>
               <h3 className="text-2xl font-bold mb-3 uppercase">Elite Marketplace</h3>
-              <p className="text-slate-600 group-hover:text-gray-300 mb-6">From high-refresh monitors to the latest consoles and anime figures.</p>
+              <p className="text-slate-600 group-hover:text-gray-300 mb-6">From high-end monitors to the consoles and anime merch, we've got it all.</p>
               <Link href="http://casegames.africa/" className="flex items-center gap-2 text-[#D32F2F] group-hover:text-white font-bold text-sm uppercase tracking-wider">
                 Shop Gear <ArrowRight size={16} />
               </Link>
@@ -272,7 +276,7 @@ export default function HomePage() {
                 <Zap className="w-6 h-6 text-black group-hover:text-white" />
               </div>
               <h3 className="text-2xl font-bold mb-3 uppercase">Case Community</h3>
-              <p className="text-slate-600 group-hover:text-gray-300 mb-6">Join the blog for hot takes, reviews, and community spotlights.</p>
+              <p className="text-slate-600 group-hover:text-gray-300 mb-6">Join the blog for hot takes, reviews, and community event spotlights.</p>
               <Link href="/blog" className="flex items-center gap-2 text-[#D32F2F] group-hover:text-white font-bold text-sm uppercase tracking-wider">
                 Read Blog <ArrowRight size={16} />
               </Link>
@@ -311,7 +315,7 @@ export default function HomePage() {
                    <div className="p-2 bg-white/10 rounded-lg"><Calendar className="text-[#D32F2F]" size={24} /></div>
                    <div>
                       <h4 className="font-bold text-xl">Weekly Events</h4>
-                      <p className="text-gray-400 text-sm">LAN parties and online scrims.</p>
+                      <p className="text-gray-400 text-sm">LAN parties and online gams</p>
                    </div>
                 </li>
                 <li className="flex items-start gap-4">
