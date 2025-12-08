@@ -126,11 +126,6 @@ export function BlogPostView({ slug }: BlogPostViewProps) {
           className="object-cover opacity-50"
           priority
         />
-        {/* CHANGES HERE:
-          1. Added `relative z-10` to make sure this container is above the `fill` Image.
-          2. Removed `mt-16` and `pt-24` from the outer div.
-          3. Added `pt-24` (to clear your header) and increased `pb-12` to `pb-24` for more padding.
-        */}
         <div className="container relative z-10 mx-auto px-4 h-full flex flex-col justify-end pt-24 pb-24">
           {/* Back button */}
           <div className="mb-8">
@@ -143,7 +138,6 @@ export function BlogPostView({ slug }: BlogPostViewProps) {
           </div>
           
           {/* Hero content */}
-          {/* CHANGE: Removed redundant `z-10` from here */}
           <div className="max-w-4xl">
             <div className="flex flex-wrap gap-2 mb-4">
               {mockPost.tags.map((tag) => (
