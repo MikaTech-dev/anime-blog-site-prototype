@@ -367,10 +367,10 @@ export default function HomePage() {
         <div className="container mx-auto">
           <div className="flex justify-between items-center mb-12">
              <h2 className="text-3xl md:text-5xl font-black text-slate-900">
-               THE <span className="text-[#D32F2F] underline decoration-4 underline-offset-4">FEED</span>
+               News and <span className="text-[#D32F2F] underline decoration-4 underline-offset-4">Reviews</span>
              </h2>
              <Link href="/blog" className="hidden md:flex items-center gap-2 font-bold text-sm uppercase tracking-widest hover:text-[#D32F2F] transition-colors">
-               View All <ArrowRight size={16} />
+               View All blog posts<ArrowRight size={16} />
              </Link>
           </div>
 
