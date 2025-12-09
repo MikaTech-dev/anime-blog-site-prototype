@@ -1,22 +1,22 @@
 "use client"
 
-import { useState, useRef } from "react"
+import { useState, useRef, Suspense } from "react"
 import Link from "next/link"
 import { useSearchParams } from "next/navigation"
 import { motion } from "framer-motion"
-import { Search, X, Hash } from "lucide-react"
+import { Search, X } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 
 const categories = [
   { id: "all", label: "All Feeds", href: "/blog" },
-  { id: "tech", label: "Tech News", href: "/blog?category=tech" },
+  { id: "tech", label: "Hardware", href: "/blog?category=tech" },
   { id: "gaming", label: "Gaming", href: "/blog?category=gaming" },
   { id: "anime", label: "Anime", href: "/blog?category=anime" },
-  { id: "guides", label: "Youtube Guides & Playthrouhs", href: "/blog?category=guides" },
+  { id: "guides", label: "Guides", href: "/blog?category=guides" },
 ]
 
-export function BlogNavigation() {
+function BlogNavigationContent() {
   const searchParams = useSearchParams()
   const currentCategory = searchParams.get("category") || "all"
   const [isSearchOpen, setIsSearchOpen] = useState(false)
@@ -93,5 +93,15 @@ export function BlogNavigation() {
 
       </div>
     </div>
+  )
+}
+
+// Export a new wrapper component that handles Suspense
+// This prevents build error by telling Next.js "If we don't have params yet, show fallback"
+export function BlogNavigation() {
+  return (
+    <Suspense fallback={<div className="h-16 w-full bg-[#050505]/80 sticky top-[72px]" />}>
+      <BlogNavigationContent />
+    </Suspense>
   )
 }
