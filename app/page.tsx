@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import type { StaticImageData } from "next/image"
@@ -103,6 +104,14 @@ const featuredPosts: FeaturedPost[] = [
 ]
 
 export default function HomePage() {
+  const [showNewsletter, setShowNewsletter] = useState(false)
+  const [email, setEmail] = useState("")
+
+  useEffect(() => {
+    const t = setTimeout(() => setShowNewsletter(true), 10000) // show after 10s
+    return () => clearTimeout(t)
+  }, [])
+
   return (
     <div className="min-h-screen bg-white text-slate-900 overflow-x-hidden font-sans selection:bg-[#D32F2F] selection:text-white">
       
@@ -467,6 +476,57 @@ export default function HomePage() {
       </section>
 
       <BlogFooter />
+
+      {/* Newsletter Popup (non-functional) */}
+      {showNewsletter && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setShowNewsletter(false)} />
+          <div className="relative w-full max-w-xl mx-4 bg-white rounded-2xl shadow-2xl overflow-hidden">
+            <div className="p-6 sm:p-8">
+              <div className="flex items-start justify-between">
+                <div>
+                  <h3 className="text-2xl font-black text-slate-900">Join our Newsletter</h3>
+                  <p className="text-sm text-slate-600 mt-2">Get curated gaming & anime updates. (demo)</p>
+                </div>
+                <button
+                  aria-label="Close newsletter"
+                  className="ml-4 text-slate-400 hover:text-slate-600 cursor-pointer"
+                  onClick={() => setShowNewsletter(false)}
+                >
+                  ✕
+                </button>
+              </div>
+
+              <div className="mt-6">
+                <label htmlFor="newsletter-email" className="sr-only">Email</label>
+                <input
+                  id="newsletter-email"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="you@example.com"
+                  className="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-[#D32F2F]"
+                />
+
+                <div className="mt-4 flex justify-end gap-3">
+                  <button
+                    className="px-4 py-2 rounded-md bg-gray-100 text-slate-700 hover:bg-gray-200 cursor-pointer"
+                    onClick={() => setShowNewsletter(false)}
+                  >
+                    Maybe later
+                  </button>
+                  <button
+                    className="px-4 py-2 rounded-md bg-[#D32F2F] text-white font-bold hover:opacity-90 cursor-pointer"
+                    onClick={() => setShowNewsletter(false)}
+                  >
+                    Subscribe
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

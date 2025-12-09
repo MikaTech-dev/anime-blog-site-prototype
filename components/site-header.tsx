@@ -59,7 +59,7 @@ export default function SiteHeader() {
             {[
               { label: "Home", href: "/" },
               { label: "About", href: "/about" },
-              { label: "The Feed", href: "/blog" },
+              { label: "The Case Feed", href: "/blog" },
               // { label: "Events", href: "/events" },
             ].map((link) => (
               <Link 

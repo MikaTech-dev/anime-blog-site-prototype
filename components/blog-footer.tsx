@@ -31,13 +31,13 @@ export function BlogFooter() {
           {/* Brand Column (Span 4) */}
           <div className="lg:col-span-4 space-y-6">
             <div className="flex items-center gap-3">
-              <div className="relative w-10 h-10">
+              <div className="relative w-14 h-14">
                 <Image src={logo} alt="Case Blogs" fill className="object-contain" />
               </div>
               <span className="text-xl font-black uppercase tracking-tight">Case Blogs</span>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed max-w-sm">
-              The premier ecosystem for gaming, technology, and anime culture in Nigeria. 
+              The Number #1 ecosystem for gaming, technology, and anime culture in Nigeria. 
               Authentic gear. Epic tournaments. Unfiltered reviews.
             </p>
             
