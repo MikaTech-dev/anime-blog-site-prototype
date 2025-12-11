@@ -55,7 +55,7 @@ export default function NotFound() {
       {/* Decorative Blur */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#D32F2F] opacity-10 blur-[120px] rounded-full pointer-events-none" />
 
-      <div className="flex-1 flex items-center justify-center relative z-10 p-4">
+      <div className="flex-1 flex items-center justify-center relative z-10 p-40">
         <motion.div 
           variants={containerVariants}
           initial="hidden"

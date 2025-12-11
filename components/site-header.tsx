@@ -110,7 +110,7 @@ export default function SiteHeader() {
               {[
                 { label: "Home Base", href: "/" },
                 { label: "About Us", href: "/about" },
-                { label: "The Feed", href: "/blog" },
+                { label: "The Case Feed", href: "/blog" },
                 { label: "Store", href: "/store" },
                 { label: "Events", href: "/events" },
               ].map((link, i) => (
